@@ -1,0 +1,17 @@
+{
+  "name": "ec2-network-monitor",
+  "version": "1.0.0",
+  "description": "Cloudflare Worker for monitoring EC2 network usage",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cloudwatch": "^3.0.0",
+    "@aws-sdk/client-ec2": "^3.0.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.17.0"
+  }
+}
