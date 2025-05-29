@@ -13,4 +13,4 @@ GOTIFY_URL= "https://gotify.liuq.pro/message"
 # AWS_SECRET_ACCESS_KEY 
 
 [observability.logs]
-enabled = true
+enabled = false
