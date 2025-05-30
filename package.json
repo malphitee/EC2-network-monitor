@@ -11,6 +11,7 @@
     "@aws-sdk/client-cloudwatch": "^3.0.0",
     "@aws-sdk/client-ec2": "^3.0.0",
     "@sentry/browser": "^9.24.0",
+    "@sentry/cloudflare": "^9.24.0",
     "@sentry/node": "^9.24.0"
   },
   "devDependencies": {

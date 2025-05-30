@@ -15,3 +15,6 @@ GOTIFY_URL= "https://gotify.liuq.pro/message"
 
 [observability.logs]
 enabled = false
+
+[build]
+external = ["@sentry/cloudflare"]
