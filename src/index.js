@@ -1,11 +1,6 @@
 import { EC2Client, DescribeInstancesCommand } from '@aws-sdk/client-ec2';
 import { CloudWatchClient, GetMetricStatisticsCommand } from '@aws-sdk/client-cloudwatch';
 
-Sentry.init({
-  dsn: "https://45b1a131151347e88a9ca8fff1bb31f9@gp.liuq.ip-ddns.com/4",
-  tracesSampleRate: 0.01,
-});
-
 function formatBytes(bytes) {
   const units = ['B', 'KB', 'MB', 'GB', 'TB'];
   let value = bytes;
@@ -91,6 +86,9 @@ async function sendGotifyMessage(url, token, message) {
 }
 
 async function sendTelegramMessage(botToken, chatId, message) {
+  const Sentry = require("@sentry/node");
+  Sentry.init({ dsn: "https://4aa85c04c06643ffb0f0ea089376234c@gp.liuq.ip-ddns.com/5" });
+
   const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
   const body = JSON.stringify({
     chat_id: chatId,
