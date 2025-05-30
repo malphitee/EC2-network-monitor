@@ -1,5 +1,6 @@
 import { EC2Client, DescribeInstancesCommand } from '@aws-sdk/client-ec2';
 import { CloudWatchClient, GetMetricStatisticsCommand } from '@aws-sdk/client-cloudwatch';
+import * as Sentry from "@sentry/cloudflare";
 
 function formatBytes(bytes) {
   const units = ['B', 'KB', 'MB', 'GB', 'TB'];
@@ -86,8 +87,6 @@ async function sendGotifyMessage(url, token, message) {
 }
 
 async function sendTelegramMessage(botToken, chatId, message) {
-  const Sentry = require("@sentry/node");
-  Sentry.init({ dsn: "https://4aa85c04c06643ffb0f0ea089376234c@gp.liuq.ip-ddns.com/5" });
 
   const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
   const body = JSON.stringify({
@@ -115,6 +114,8 @@ async function sendTelegramMessage(botToken, chatId, message) {
 
 export default {
   async fetch(request, env, ctx) {
+    Sentry.init({ dsn: "https://4aa85c04c06643ffb0f0ea089376234c@gp.liuq.ip-ddns.com/5" });
+
     // 只在主页面请求时推送，忽略/favicon.ico等
     const urlObj = new URL(request.url);
     const isMainPage = urlObj.pathname === '/';
