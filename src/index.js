@@ -1,6 +1,9 @@
 import { EC2Client, DescribeInstancesCommand } from '@aws-sdk/client-ec2';
 import { CloudWatchClient, GetMetricStatisticsCommand } from '@aws-sdk/client-cloudwatch';
 
+const Sentry = require("@sentry/node");
+Sentry.init({ dsn: "https://dc680427b1d643028a98478453326876@gp.liuq.ip-ddns.com/3" });
+
 function formatBytes(bytes) {
   const units = ['B', 'KB', 'MB', 'GB', 'TB'];
   let value = bytes;
